@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #fff;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0072ff;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.result-box {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.bar-container {
+  width: 100%;
+  background: #ddd;
+  border-radius: 20px;
+  margin-top: 10px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  width: 0;
+  animation: growBar 1s ease-out forwards;
+  border-radius: 20px;
+}
+
+@keyframes growBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--risk-width, 0%);
+  }
+}

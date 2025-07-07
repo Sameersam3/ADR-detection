@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADR Risk Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    function showLoading() {
+      const btn = document.getElementById("predict-btn");
+      btn.disabled = true;
+      btn.innerText = "Predicting...";
+    }
+  </script>
+</head>
+<body>
+  <div class="glass-card">
+    <h1>💊 ADR Risk Predictor</h1>
+
+    <form method="POST" onsubmit="showLoading()">
+      <div class="form-grid">
+        <div><label>Age</label><input type="number" name="age" required></div>
+        <div><label>Gender</label>
+          <select name="gender">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+          </select>
+        </div>
+        <div><label>Medication Count</label><input type="number" name="med_count" required></div>
+        <div><label>Condition Present?</label>
+          <select name="condition">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div><label>Hospital Visits</label><input type="number" name="visits" required></div>
+        <div><label>Allergies?</label>
+          <select name="allergies">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div><label>Vaccinated?</label>
+          <select name="vaccines">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" id="predict-btn">🔍 Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result-box">
+      <h2>{{ prediction }}</h2>
+      <div class="bar-container">
+        <div class="bar" style="--risk-width: {{ (prediction.split(':')[-1] | float) * 100 }}%"></div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
